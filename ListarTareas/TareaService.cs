@@ -29,7 +29,7 @@ namespace ListarTareas
                 MostrarTarea(tarea);
             }
         }
-
+        
         // Listar solo las tareas pendientes
         public void ListarTareasPendientes()
         {
