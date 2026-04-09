@@ -1,8 +1,11 @@
-﻿internal class TaskStatus
-
+﻿namespace TaskStatus
 {
-    private static void Main(string[] args)
+    internal class TaskStatus
+
     {
-        Console.WriteLine("Hello, World!");
+        private static void Main(string[] args)
+        {
+            
+        }
     }
 }
