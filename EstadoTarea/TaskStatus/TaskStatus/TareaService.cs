@@ -11,15 +11,13 @@ namespace TaskStatus
     {
         private List<Tarea> tareas = new List<Tarea>();
 
-        public void CambiarEstado(int id)
+        public void MostrarEstadoTareas()
         {
-
-            var tarea = tareas.Find(t => t.Id == id);
-
-            if (tarea != null)
+            foreach (var tarea in tareas)
             {
-                tarea.Completada = true;
-                Console.WriteLine("Tarea completada");
+                Console.WriteLine(
+                    $"{tarea.Id}. {tarea.Descripcion} - {(tarea.Completada ? "Completada" : "Pendiente")}"
+                );
             }
         }
     }

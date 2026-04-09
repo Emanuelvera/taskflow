@@ -5,7 +5,9 @@
     {
         private static void Main(string[] args)
         {
-            
+            TareaService servicio = new TareaService();
+
+            servicio.MostrarEstadoTareas();
         }
     }
 }
