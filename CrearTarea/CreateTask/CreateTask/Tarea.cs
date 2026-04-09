@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreateTask
 {
-    public class Task
+    public class Tarea
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }

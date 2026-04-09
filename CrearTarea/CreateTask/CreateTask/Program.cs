@@ -4,7 +4,7 @@
     {
         private static void Main(string[] args)
         {
-            var tareaService = new TaskService();
+            var tareaService = new TareaService();
 
             Console.WriteLine("Ingrese una descripción de la tarea:");
             string descripcion = Console.ReadLine();

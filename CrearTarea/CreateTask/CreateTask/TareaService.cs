@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace CreateTask
 {
-    public class TaskService
+    public class TareaService
     {
-        private List<Task> tareas = new List<Task>();
+        private List<Tarea> tareas = new List<Tarea>();
         private int nextId = 1;
 
         public void CrearTarea(string descripcion)
         {
-            var tarea = new Task
+            var tarea = new Tarea
             {
                 Id = nextId++,
                 Descripcion = descripcion,
