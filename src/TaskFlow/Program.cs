@@ -4,12 +4,12 @@
     {
         private static void Main(string[] args)
         {
-            var tareaService = new TareaService();
+            var taskService = new TaskService();
 
             Console.WriteLine("Ingrese una descripción de la tarea:");
-            string descripcion = Console.ReadLine();
+            string descripcion = Console.ReadLine() ?? string.Empty;
 
-            tareaService.CrearTarea(descripcion);
+            taskService.CrearTarea(descripcion);
         }
     }
 }
