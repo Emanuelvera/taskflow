@@ -51,7 +51,6 @@ namespace CreateTask
             TaskStatus.Pending    => "Pendiente",
             TaskStatus.InProgress => "En progreso",
             TaskStatus.Completed  => "Completada",
-            TaskStatus.Cancelled  => "Cancelada",
             _                     => "Desconocido"
             };
             
