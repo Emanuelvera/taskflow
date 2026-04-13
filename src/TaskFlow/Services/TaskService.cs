@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TaskFlow.Models;
-using System.Threading;
 
 namespace TaskFlow.Services
 {
@@ -25,12 +25,12 @@ namespace TaskFlow.Services
             Console.WriteLine("Tarea creada correctamente");
         }
 
-        public List<TaskItem> ListarTareas(TaskStatus? filtro = null)
+        public List<TaskItem> ListarTareas(Models.TaskStatus? filtro = null)
         {
             if (filtro == null)
-            return tareas;
+                return tareas;
             return tareas.Where(t => t.Status == filtro).ToList();
-            }
+        }
 
         public void MostrarTareas(List<TaskItem> lista)
         {
@@ -49,10 +49,10 @@ namespace TaskFlow.Services
          { 
             string estado = tarea.Status switch
             {
-            TaskStatus.Pending    => "Pendiente",
-            TaskStatus.InProgress => "En progreso",
-            TaskStatus.Completed  => "Completada",
-            _                     => "Desconocido"
+                Models.TaskStatus.Pending    => "Pendiente",
+                Models.TaskStatus.InProgress => "En progreso",
+                Models.TaskStatus.Completed  => "Completada",
+                _                            => "Desconocido"
             };
             
             string updatedAt = tarea.UpdatedAt.HasValue
@@ -71,25 +71,23 @@ namespace TaskFlow.Services
         Console.WriteLine();
         
         }
-    }
-}
+
         public void ActualizarEstado()
         {
             Console.Clear();
-            console.WriteLine("¿Qué tarea desea actualizar?");
+            Console.WriteLine("¿Qué tarea desea actualizar?");
             //funcion de guada(el listar)
 
             //ingreso de id de la tarea a actualizar
             TaskItem tareaSeleccionada = null;
             do
             {
-            thread.Sleep(3000);
+            Thread.Sleep(3000);
             Console.Clear();
             Console.Write("Ingrese el ID de la tarea a actualizar: ");
             string input = Console.ReadLine();
-            int idMod;
 
-            if (!int.TryParse(input, out idMod) || idMod <= 0)
+            if (!int.TryParse(input, out int idMod) || idMod <= 0)
             {
                 Console.WriteLine("Por favor, ingrese un número entero positivo válido para el ID.");
                 continue;
@@ -110,7 +108,7 @@ namespace TaskFlow.Services
 
             Console.Clear();
             Console.WriteLine("Estados posibles:");
-            foreach (var estado in Enum.GetValues(typeof(TaskStatus)))
+            foreach (var estado in Enum.GetValues<Models.TaskStatus>())
             {
                 Console.WriteLine($"{(int)estado} - {estado}");
             }
@@ -121,7 +119,7 @@ namespace TaskFlow.Services
             int estadoSeleccionado;
 
             while (!int.TryParse(estadoInput, out estadoSeleccionado) ||
-                   !Enum.IsDefined(typeof(TaskStatus), estadoSeleccionado))
+                   !Enum.IsDefined(typeof(Models.TaskStatus), estadoSeleccionado))
             {
                 Console.WriteLine("Por favor, ingrese un valor válido para el estado.");
                 Console.Write("Ingrese el número correspondiente al nuevo estado: ");
@@ -129,11 +127,11 @@ namespace TaskFlow.Services
             }
 
             // Actualizar el estado
-            tareaSeleccionada.Status = (TaskStatus)estadoSeleccionado;
+            tareaSeleccionada.Status = (Models.TaskStatus)estadoSeleccionado;
             tareaSeleccionada.UpdatedAt = DateTime.Now;
             Console.WriteLine("Estado actualizado correctamente.");
 
             Console.WriteLine($"Tarea {tareaSeleccionada.ID} ahora está en estado {tareaSeleccionada.Status}");
         }
-
     }
+}
