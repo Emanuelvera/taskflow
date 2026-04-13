@@ -30,9 +30,9 @@ El repositorio sigue una arquitectura organizada para facilitar la escalabilidad
    ```
 
 ## Integrantes del Equipo (NovaTech)
-* **Altamirano Vera Emanuel**
-* **Belén Castro**
-* **Marianela Chumbita**
-* **Matías Saunig**
-* **Loyola Guadalupe**
+* **Altamirano Vera Emanuel**  **Tech Lead**
+* **Belén Castro** **QA**
+* **Marianela Chumbita** **Developer**
+* **Matías Saunig** **Developer**
+* **Loyola Guadalupe** **Developer**
 
