@@ -10,8 +10,7 @@ namespace TaskFlow.Models
     {
         Pending,
         InProgress,
-        Completed,
-        Cancelled
+        Completed
     }
 
     public class TaskItem
