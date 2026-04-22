@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TaskFlow.Models;
@@ -95,7 +95,7 @@ namespace TaskFlow.Services
                     Title = title,
                     Description = description,
                     Responsible = responsible,
-                    Status = TaskStatus.Pending,
+                    Status = TaskFlow.Models.TaskStatus.Pending,
                     CreatedAt = DateTime.UtcNow,
                     UpdatedAt = null
                 };
@@ -110,8 +110,8 @@ namespace TaskFlow.Services
         public List<TaskItem> ListarTareas(Models.TaskStatus? filtro = null)
         {
             if (filtro == null)
-                return tareas;
-            return tareas.Where(t => t.Status == filtro).ToList();
+                return _tasks;
+            return _tasks.Where(t => t.Status == filtro).ToList();
         }
 
         public void MostrarTareas(List<TaskItem> lista)
@@ -161,13 +161,13 @@ namespace TaskFlow.Services
             //funcion de guada(el listar)
 
             //ingreso de id de la tarea a actualizar
-            TaskItem tareaSeleccionada = null;
+            TaskItem? tareaSeleccionada = null;
             do
             {
             Thread.Sleep(3000);
             Console.Clear();
             Console.Write("Ingrese el ID de la tarea a actualizar: ");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine() ?? string.Empty;
 
             if (!int.TryParse(input, out int idMod) || idMod <= 0)
             {
@@ -175,7 +175,7 @@ namespace TaskFlow.Services
                 continue;
             }
 
-            tareaSeleccionada = tareas.Find(t => t.ID == idMod);
+            tareaSeleccionada = _tasks.Find(t => t.ID == idMod);
             if (tareaSeleccionada == null)
             {
                 Console.WriteLine("No existe una tarea con ese ID.");
@@ -197,7 +197,7 @@ namespace TaskFlow.Services
 
             // Solicitar el nuevo estado
             Console.Write("Ingrese el número correspondiente al nuevo estado: ");
-            string estadoInput = Console.ReadLine();
+            string estadoInput = Console.ReadLine()?? string.Empty;
             int estadoSeleccionado;
 
             while (!int.TryParse(estadoInput, out estadoSeleccionado) ||
@@ -205,7 +205,7 @@ namespace TaskFlow.Services
             {
                 Console.WriteLine("Por favor, ingrese un valor válido para el estado.");
                 Console.Write("Ingrese el número correspondiente al nuevo estado: ");
-                estadoInput = Console.ReadLine();
+                estadoInput = Console.ReadLine()?? string.Empty;
             }
 
             // Actualizar el estado

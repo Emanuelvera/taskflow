@@ -1,18 +1,18 @@
 ﻿using TaskFlow.Services;
 using TaskFlow.Models;
 
-namespace CreateTask
+namespace TaskFlow
 {
-    internal class CreateTask
+    internal class Program
     {
         private static void Main(string[] args)
         {
             var taskService = new TaskService();
 
             Console.WriteLine("Ingrese una descripción de la tarea:");
-            string descripcion = Console.ReadLine() ?? string.Empty;
+            //string descripcion = Console.ReadLine() ?? string.Empty;
 
-            taskService.CrearTarea(descripcion);
+            taskService.CrearTarea();
 
             bool salir = false;
             while (!salir)
@@ -61,3 +61,4 @@ namespace CreateTask
         
         }
     }
+}
